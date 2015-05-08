@@ -1,2 +1,10 @@
-%h1 Root#index
-%p Find me in app/views/root/index.html.haml
+%h1 Chcklst
+
+%h2
+  %i.glyphicon.glyphicon-modal-window
+  Usage
+%p
+  %pre
+    curl -X POST https://chcklst.herokuapp.com/api/lists.json -d "title=List title" -d "items=item1,item2,item 3"
+%p
+  = video_tag "ss.mp4", width: '80%', height: 'auto', controls: true

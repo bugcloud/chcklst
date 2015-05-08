@@ -3,3 +3,9 @@ $bg-color: #efefef;
 body {
   background-color: $bg-color;
 }
+
+h2 {
+  .glyphicon {
+    top: 5px;
+  }
+}
