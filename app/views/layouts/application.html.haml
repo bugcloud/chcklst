@@ -1,0 +1,33 @@
+!!!
+%html{:lang => "ja"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+    %title Chcklst
+    = stylesheet_link_tag    'application', media: 'all'
+    = csrf_meta_tags
+  %body
+
+    .container-fluid
+      .row
+        .col-lg-12
+          = yield :h1
+          - if notice
+            .alert.alert-info.alert-dismissable
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              %i.fa.fa-info-circle
+              = notice
+          - if alert
+            .alert.alert-danger.alert-dismissable
+              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+              %i.fa.fa-info-circle
+              = alert
+
+      = yield
+
+    = javascript_include_tag 'application'
+    = yield :script
