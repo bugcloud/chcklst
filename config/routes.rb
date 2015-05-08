@@ -5,8 +5,17 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'root#index'
 
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
+  resources :lists, param: :list_uuid, only: [:show] do
+    member do
+      delete :archive
+    end
+  end
+
+  namespace :api do
+    resources :lists, param: :uuid, only: [:create] do
+      resources :items, only: [:update]
+    end
+  end
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

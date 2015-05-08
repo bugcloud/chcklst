@@ -1,0 +1,31 @@
+- if @list
+  %h1= @list.title
+
+  = form_tag archive_list_path(@list.list_uuid), method: :delete do
+    - @list.items.each do |item|
+      .checkbox
+        %label
+          = check_box_tag item.id, 'true', item.checked, { data: { 'update-url' => api_list_item_path(@list.list_uuid, item) } }
+          = item.title
+    = button_tag 'Delete this list', class: 'btn btn-danger', type: :submit, data: { confirm: 'Are you sure?' }
+
+- else
+  .alert.alert-danger{ role: :alert }
+    %strong
+      Oops!
+    This list has been deleted already.
+
+= content_for :script do
+  :javascript
+    var checkboxes = document.querySelectorAll('input[type=checkbox]')
+    for (var i=0; i<checkboxes.length; ++i) {
+      var box = checkboxes[i];
+      box.addEventListener('change', function(event) {
+        var request = jQuery.ajax(event.target.dataset.updateUrl, {
+          method: 'PUT',
+          data: { checked: event.target.checked + '' }
+        });
+        //request.done(function() {});
+        //request.fail(function(jqXHR, textStatus) {});
+      });
+    }

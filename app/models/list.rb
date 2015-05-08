@@ -16,4 +16,17 @@
 
 class List < ActiveRecord::Base
   has_many :items
+  accepts_nested_attributes_for :items,
+    reject_if: proc { |obj| obj['title'].blank? }
+
+  validates :title,     presence: true
+  validates :list_uuid, presence: true,
+                        uniqueness: true
+
+  before_validation :set_list_uuid
+
+  private
+    def set_list_uuid
+      self.list_uuid = SecureRandom.uuid
+    end
 end
