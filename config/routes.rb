@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       delete :archive
     end
   end
+  post '/lists/:list_uuid/items', to: 'items#create', as: 'list_items'
 
   namespace :api do
     resources :lists, param: :uuid, only: [:create] do

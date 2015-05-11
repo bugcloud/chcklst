@@ -9,6 +9,16 @@
           = item.title
     = button_tag 'Delete this list', class: 'btn btn-danger', type: :submit, data: { confirm: 'Are you sure?' }
 
+  %hr
+
+  %h2 Need more items?
+  .row
+    .col-sm-3
+      = form_for @new_item, url: list_items_path(list_uuid: @list.list_uuid) do |f|
+        .form-group
+          = f.text_field :title, class: 'form-control', placeholder: 'new item name'
+        = f.button 'Add a new item', class: 'btn btn-primary', type: :submit
+
 - else
   .alert.alert-danger{ role: :alert }
     %strong

@@ -2,6 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list, only: [:show, :archive]
 
   def show
+    @new_item = Item.new(list: @list)
   end
 
   def archive
