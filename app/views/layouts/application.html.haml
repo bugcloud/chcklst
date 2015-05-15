@@ -17,15 +17,17 @@
         .col-lg-12
           = yield :h1
           - if notice
-            .alert.alert-info.alert-dismissable
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
-              %i.fa.fa-info-circle
-              = notice
+            .notice-block
+              .alert.alert-info.alert-dismissable
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                %i.fa.fa-info-circle
+                = notice
           - if alert
-            .alert.alert-danger.alert-dismissable
-              %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
-              %i.fa.fa-info-circle
-              = alert
+            .alert-block
+              .alert.alert-danger.alert-dismissable
+                %button.close{"aria-hidden" => "true", "data-dismiss" => "alert", :type => "button"} ×
+                %i.fa.fa-info-circle
+                = alert
 
       = yield
 
