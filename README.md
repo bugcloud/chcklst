@@ -12,6 +12,42 @@ After pushing Heroku button and deploying to Heroku, set application URL manuall
 heroku config:set APP_BASE_URL='YOUR_HEROKU_APP_URL'
 ```
 
+## Client
+
+Any client will work.
+
+Hubot script sample is [here](https://gist.github.com/bugcloud/6f788316658a63328f63).
+
+```coffee
+# Description:
+#   Generate a simple checklist.
+#
+# Commands:
+#   hubot checklist <title> <item1,item2,...> - リストタイトルとアイテムを指定してチェックリストを生成
+#
+
+chcklst = 'https://chcklst.herokuapp.com'
+
+module.exports = (robot) ->
+
+  robot.respond /(checklist|chcklst|チェックリスト) (.*) (.*)/i, (msg) ->
+    title = msg.match[2]
+    items = msg.match[3].split(',').map (item) ->
+      item.trim()
+    data = JSON.stringify({
+      title: title
+      items: items.join(',')
+    })
+    robot.http("#{chcklst}/api/lists.json")
+      .headers('Accept': 'application/json', 'Content-Type': 'application/json')
+      .post(data) (err, res, body) ->
+        unless res.statusCode is 200
+          msg.send "A list have not generated :("
+          return
+        else
+          result = JSON.parse(body)
+          msg.send "Got back #{result.list.url}"
+```
 
 # How to develop
 
