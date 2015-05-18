@@ -4,6 +4,15 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/bugcloud/chcklst/tree/master)
 
+## How to deploy to Heroku
+
+After pushing Heroku button and deploying to Heroku, set application URL manually.
+
+```
+heroku config:set APP_BASE_URL='YOUR_HEROKU_APP_URL'
+```
+
+
 # How to develop
 
 ## Required
