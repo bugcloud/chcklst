@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 
   protected
     def set_list
-      @list = List.where(archived: false).includes(:items).find_by(list_uuid: params[:list_uuid])
+      @list = List.where(archived: false).includes(:items).order('items.created_at asc').find_by(list_uuid: params[:list_uuid])
     end
 end
