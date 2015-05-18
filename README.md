@@ -2,6 +2,8 @@
 
 チェックリストを生成するだけのWebアプリケーション
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/bugcloud/chcklst/tree/master)
+
 # How to develop
 
 ## Required
