@@ -1,0 +1,10 @@
+{
+  "name": "Chcklst",
+  "description": "Checklist as a Service. https://chcklst.herokuapp.com/",
+  "repository": "https://github.com/bugcloud/chcklst.git",
+  "logo": "https://chcklst.herokuapp.com/favicon.ico",
+  "keywords": ["checklist", "as", "a", "service"],
+  "scripts": {
+    "postdeploy": "bundle exec rake db:setup"
+  }
+}
