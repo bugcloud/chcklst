@@ -1,6 +1,6 @@
 # Chcklst
 
-チェックリストを生成するだけのWebアプリケーションプロトタイプ
+チェックリストを生成するだけのWebアプリケーション
 
 # How to develop
 
@@ -38,7 +38,7 @@ brew install terminal-notifier
 ## Checkout and Setup
 
 ```
-git clone git@gitlab.so-ra.co.jp:y.nagino/chcklst.git
+git clone git@github.com:bugcloud/chcklst.git
 cd chcklst
 bin/bundle install --path vendor/bundle
 ```
