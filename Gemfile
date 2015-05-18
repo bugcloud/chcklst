@@ -73,4 +73,5 @@ group :production do
   # gem 'therubyracer'
   # for Heroku
   gem 'rails_12factor'
+  gem 'pg'
 end
